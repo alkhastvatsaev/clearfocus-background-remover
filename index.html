@@ -19,9 +19,9 @@
     <div id="top-progress" class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
     <div class="content">
         <input type="file" id="file-input" accept="image/*" hidden>
-        <div id="drop-zone" class="state-view">
+        <button id="drop-zone" class="state-view" type="button" aria-label="Choose an image">
             <div class="minimal-icon-btn"><i data-lucide="plus" size="40" stroke-width="1"></i></div>
-        </div>
+        </button>
         <div id="processing-view" class="state-view hidden">
             <div class="loader-icon"><i data-lucide="sparkles" size="40" stroke-width="1" class="pulse"></i></div>
         </div>
@@ -32,8 +32,8 @@
                 </div>
             </div>
             <div class="actions">
-                <button id="reset-btn" class="icon-btn"><i data-lucide="x" size="24" stroke-width="1.5"></i></button>
-                <button id="download-btn" class="icon-btn primary"><i data-lucide="arrow-down" size="24" stroke-width="1.5"></i></button>
+                <button id="reset-btn" class="icon-btn" type="button" aria-label="Choose another image"><i data-lucide="x" size="24" stroke-width="1.5"></i></button>
+                <button id="download-btn" class="icon-btn primary" type="button" aria-label="Download transparent PNG"><i data-lucide="arrow-down" size="24" stroke-width="1.5"></i></button>
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@
             document.getElementById('download-btn').onclick = () => {
                 const a = document.createElement('a');
                 a.href = URL.createObjectURL(currentBlob);
-                a.download = "cleafocus.png";
+                a.download = "clearfocus.png";
                 a.click();
             };
         });

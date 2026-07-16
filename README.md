@@ -1,26 +1,37 @@
-# ClearFocus | Logiciel de Suppression d'Arrière-plan de Luxe
+# ClearFocus
 
-J'ai conçu pour vous **ClearFocus**, une application web haute performance qui permet de transformer vos photos de produits en images professionnelles avec un fond transparent en un seul clic.
+A small, privacy-minded background removal tool that runs image segmentation in
+the browser and exports the result as a transparent PNG.
 
-## 🚀 Fonctionnalités Clés
-- **IA de Pointe** : Utilise des modèles de segmentation avancés pour détourer parfaitement le produit.
-- **Suppression des Ombres** : Nettoie l'image pour ne garder que l'objet essentiel.
-- **Confidentialité Totale** : Le traitement se fait directement dans votre navigateur (WASM). Vos photos ne quittent jamais votre ordinateur.
-- **Format Professionnel** : Exportation instantanée en `.png` avec canal alpha (transparence).
+[Try the live demo](https://remove-ashy-three.vercel.app)
 
-## 🎨 Design Premium
-- **Interface Glassmorphism** : Effets de flou et de transparence pour une expérience utilisateur moderne.
-- **Micro-animations** : Retours visuels pendant le traitement via une barre de progression.
-- **Mode Sombre** : Esthétique épurée inspirée des standards du luxe (Apple, Cartier).
+## What it demonstrates
 
-## 🛠 Structure du Projet
-- [index.html](file:///Users/alkhastvatsaev/Desktop/Background%20remover/index.html) : Structure de l'application.
-- [style.css](file:///Users/alkhastvatsaev/Desktop/Background%20remover/style.css) : Design et animations.
-- [app.js](file:///Users/alkhastvatsaev/Desktop/Background%20remover/app.js) : Logique de traitement IA.
+- Client-side image processing with `@imgly/background-removal`
+- Dynamic model loading and progress feedback
+- Drag-free, mobile-friendly upload and download flow
+- A dependency-free interface built with semantic HTML, CSS and JavaScript
 
-## 📝 Note d'Utilisation
-Lors de la **première utilisation**, l'application téléchargera le modèle d'IA (environ 80 Mo). Cela peut prendre quelques secondes selon votre connexion, mais les utilisations suivantes seront instantanées grâce au cache du navigateur.
+Images are processed in the browser. The segmentation model and its runtime are
+loaded from third-party CDNs, so the first run requires a network connection.
 
----
-**L'application est maintenant disponible sur :**
-[http://localhost:8081](http://localhost:8081)
+## Run locally
+
+Serve the directory with any static server:
+
+```bash
+python3 -m http.server 8081
+```
+
+Then open <http://localhost:8081>. Opening `index.html` directly may prevent the
+browser from loading the ES module because of local-file security restrictions.
+
+## Limitations
+
+- Output quality depends on the upstream segmentation model.
+- Large images can be slow or memory-intensive on mobile devices.
+- There is currently no offline model cache or automated test suite.
+
+## Tech
+
+HTML, CSS, JavaScript, WebAssembly-backed browser inference, Vercel.
